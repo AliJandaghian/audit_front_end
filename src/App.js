@@ -1,13 +1,19 @@
-import './App.css';
-import NavBar from './components/navBar';
+import React, { Component } from 'react';
+import "./App.css";
+import NavBar from "./components/navBar";
+import { Route, Redirect, Routes } from "react-router-dom";
+import Audits from "./components/audits";
 
-function App() {
+
+class App extends Component {
+  render() {
   return (
-   <main className='countainer'>
-     <NavBar />
-     <p>Hi</p>
-   </main>
+    <React.Fragment>
+      <NavBar />
+      <Audits />
+    </React.Fragment>
   );
+  }
 }
 
 export default App;

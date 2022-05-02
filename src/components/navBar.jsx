@@ -13,7 +13,7 @@ class NavBar extends Component {
   render() {
     return (
       <div className="nav">
-        <a className="link nav__brand" href="/">
+        <a className="nav__brand link " href="/">
           Auditing App
         </a>
 

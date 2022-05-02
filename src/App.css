@@ -9,7 +9,7 @@ body {
 /* Buttons */
 .button {
   width: 100%;
-  padding: 0.7rem 1rem;
+  padding: 0.5rem 0.8rem;
   border-radius: 20px;
 }
 .button__green {
@@ -138,6 +138,7 @@ select:focus {
   transition: background-color 0.3s;
 }
 .nav__brand:hover {
+  color: rgb(232, 246, 237);
   background-color: rgb(98, 90, 187);
 }
 
@@ -234,14 +235,20 @@ select:focus {
 }
 
 .side-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 1.2rem;
   padding-bottom: 1rem;
   height: 2rem;
   width: 100%;
   font-weight: bold;
-  color: brown;
+  color: rgb(219,112,147);
 }
 
+.side-bar__close {
+  border: none;
+}
 .side-bar__body {
   font-size: 1rem;
   width: 100%;
@@ -252,9 +259,13 @@ select:focus {
   height: 3rem;
   font-size: 1.4rem;
   padding: 0;
-  border: 1px solid rgb(186, 184, 184);
+  border: 1px solid rgb(219,112,147);
   border-left: none;
-  background-color: rgb(201, 198, 232);
+  background-color: rgb(219,112,147)
+}
+
+.side-bar__toggler:hover{
+  filter: brightness(130%);
 }
 
 .side-bar__hide {
@@ -271,12 +282,15 @@ select:focus {
   .side-bar__hide {
     display: flex;
   }
+  .side-bar__close {
+    display: none;
+  }
 }
 
 .work-area {
   font-size: 1rem;
   padding: 1rem;
-  border: 1px solid gray;
+  border: 1px solid rgb(186, 184, 184);
   border-radius: 5px;
 }
 
