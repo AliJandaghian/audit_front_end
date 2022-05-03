@@ -11,6 +11,7 @@ body {
   width: 100%;
   padding: 0.5rem 0.8rem;
   border-radius: 20px;
+  font-size: 0.8rem;
 }
 .button__green {
   color: aliceblue;
@@ -54,6 +55,7 @@ label {
   font-size: 1rem;
   display: block;
 }
+
 
 select {
   -webkit-appearance: none;
@@ -302,16 +304,16 @@ select:focus {
 
 .login-form {
   padding: 4rem;
-  margin: 5rem auto;
+  margin:  auto;
 }
 
 .login-form p {
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-top: 2rem;
 }
 @media screen and (min-width: 768px) {
   .login-form {
-    width: 20rem;
+    width: 30rem;
   }
 }
 

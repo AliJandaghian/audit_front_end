@@ -12,10 +12,10 @@ http.setJwt(getJwt())
 
 export async function login(user) {
     const { data: jwt } = await http.post(apiEndpoint, {
-        email: user.username,
+        email: user.email,
         password: user.password
     })
-
+console.log(jwt)
     localStorage.setItem(tokenKey, jwt)
 }
 
@@ -33,7 +33,7 @@ export function getCurrentUser() {
         const jwt = localStorage.getItem(tokenKey)
         return  jwtDecode(jwt)
       }
-      catch (ex) {null}
+      catch (ex) { return null}
 }
 
 export function getJwt() {
