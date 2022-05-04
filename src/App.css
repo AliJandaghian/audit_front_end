@@ -55,7 +55,13 @@ label {
   font-size: 1rem;
   display: block;
 }
-
+.error-label{
+  margin: 0.3rem;
+  padding: 0.4rem 0.5rem;
+  background-color: rgba(248, 110, 110, 0.541);
+  color: rgb(114, 2, 2);
+  border-radius: 4px;
+}
 
 select {
   -webkit-appearance: none;

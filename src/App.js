@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import "./App.css";
 import NavBar from "./components/navBar";
-import { Route, Redirect, Routes } from "react-router-dom";
+import { Route, Redirect, Routes,BrowserRouter as Router } from "react-router-dom";
+
 import Audits from "./components/audits";
 import Login from './components/login';
 import { ToastContainer } from "react-toastify";
@@ -13,8 +14,11 @@ class App extends Component {
     <React.Fragment>
        <ToastContainer />
       <NavBar />
-      <Login />
-      
+      <Routes>
+      <Route  path="/login" element={<Login/>}/>
+      <Route  path="/audits" element={<Audits/>}/>
+      <Route exact path="/" element={<Audits/>}/>
+      </Routes>
     </React.Fragment>
   );
   }
