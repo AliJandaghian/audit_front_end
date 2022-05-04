@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Joi from "joi-browser";
+import Input from './input';
 
 class Form extends Component {
     state = { 
@@ -57,8 +58,8 @@ class Form extends Component {
     renderInput(name,label,type ="text",placeholder="",autocomplete ="on") {
         const {data, errors} = this.state
         return (
-            <div className="form-group">
-            <input
+           
+            <Input
               onChange={this.handleChange}
               name={name}
               type={type}
@@ -68,8 +69,7 @@ class Form extends Component {
               error={errors[name]}
               autoComplete= {autocomplete}
             />
-            <label >{errors[name]}</label>
-          </div>   
+            
         )
     }
 
