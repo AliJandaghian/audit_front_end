@@ -15,7 +15,6 @@ export async function login(user) {
         email: user.email,
         password: user.password
     })
-console.log(jwt)
     localStorage.setItem(tokenKey, jwt)
 }
 

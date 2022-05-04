@@ -18,7 +18,7 @@ class NavBar extends Component {
         </a>
 
         <button onClick={this.handleExpandButton} className="nav__toggler">
-          {this.state.navStatus && <i class="fas fa-times"></i> ||<i className="fas fa-bars"></i> }
+          {this.state.navStatus && <i className="fas fa-times"></i> ||<i className="fas fa-bars"></i> }
         </button>
         <ul className={`list nav__list ${this.state.navStatus}`}>
           <li className="nav__item">
