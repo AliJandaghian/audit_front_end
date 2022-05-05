@@ -1,11 +1,10 @@
-import React, { Component } from "react";
 import Joi from "joi-browser";
 import auth from "../services/authService";
 import Form from "./common/form";
 
 class Login extends Form {
   state = {
-    data: { email: "", password: "" },
+    data: { email: "", password: "", departmentId: "" },
     errors: {},
   };
 
@@ -41,11 +40,12 @@ class Login extends Form {
           "Password",
           "off"
         )}
+
         {this.renderButton("Sing in", "button__purple")}
         <p>
-          Don't have account ?
+          Don't have account ?&nbsp;
           <a className="link" href="">
-            Register Here
+             Register Here
           </a>
         </p>
       </form>
