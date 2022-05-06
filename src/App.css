@@ -170,7 +170,7 @@ select:focus {
   overflow: hidden;
   opacity : 0;
   max-height: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 .nav__item {
   padding: 0.7rem 1rem;
@@ -187,7 +187,7 @@ select:focus {
 }
 
  .nav__list.expanded {
-  max-height: fit-content;
+  max-height: 15rem;
   opacity : 1;
 }
 

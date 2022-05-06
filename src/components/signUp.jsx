@@ -44,7 +44,7 @@ class SignUp extends Form {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="form sign-up-form">
-        <h2 className="form__header">Sign Up Form</h2>
+        <h2 className="form__header">Please Sign Up</h2>
         {this.renderInput("name", "Name","text","Your full name")}
         {this.renderSelect(
           "departmentId",
