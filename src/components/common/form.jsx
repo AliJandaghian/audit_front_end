@@ -38,12 +38,10 @@ class Form extends Component {
     
       handleChange = (event) => {
         const { name, value } = event.target;
-        console.log(value)
         let errors = { ...this.state.errors };
         const errorMessage = this.validateProperty(event);
         if (errorMessage) errors[name] = errorMessage;
         else delete errors[name];
-    
         let data = { ...this.state.data };
         data[name] = value;
         this.setState({ data: data, errors });
@@ -56,15 +54,14 @@ class Form extends Component {
       </button>);
     }
 
-    renderInput(name,label,type ="text",placeholder="",autocomplete ="on") {
+    renderInput(name,label,type ="text",placeholder, autocomplete ="on") {
         const {data, errors} = this.state
         return (
-           
             <Input
               onChange={this.handleChange}
               name={name}
-              type={type}
               label={label}
+              type={type}
               value={data[name]}
               placeholder={placeholder}
               error={errors[name]}

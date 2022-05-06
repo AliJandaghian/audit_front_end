@@ -52,8 +52,10 @@ select {
 }
 
 label {
-  font-size: 1rem;
+  font-size: 0.9rem;
   display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
 }
 .error-label{
   margin: 0.3rem;
@@ -327,21 +329,19 @@ select:focus {
 
 .sign-up-form {
   padding: 4rem;
-  margin: 5rem auto;
+  margin:  auto;
 }
 
 .sign-up-form p {
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-top: 2rem;
 }
 
-.sign-up-form input[type="email"] {
-  margin-bottom: 1.5rem;
-}
+
 
 @media screen and (min-width: 768px) {
   .sign-up-form {
-    width: 20rem;
+    width: 30rem;
   }
 }
 
