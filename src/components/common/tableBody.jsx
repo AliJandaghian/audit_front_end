@@ -16,7 +16,7 @@ class TableBody extends Component {
     return (
       <tbody>
         {data.map((item) => (
-          <tr key={item._id} scope="row">
+          <tr key={item._id}>
             {columns.map((col) => (
               <td key={this.generateKey(item, col)}>
                 {this.renderCell(item, col)}
