@@ -1,4 +1,4 @@
-import http from "./userService";
+import http from "./httpService";
 
 const apiEndpoint = "/audits";
 
@@ -9,8 +9,8 @@ function auditUrl(auditSettingId, auditId) {
   return `${apiEndpoint}/${auditSettingId}/${auditId}}`;
 }
 
-export async function getAudits(auditSettingId) {
-  return await http.get(auditsUrl(auditSettingId));
+export async function getAudits(query) {
+  return await http.get(auditsUrl(query));
 }
 
 export async function getAudit(auditSettingId, auditId) {
