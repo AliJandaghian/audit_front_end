@@ -13,7 +13,8 @@ class DateFilter extends Component {
     return (
       <DropDown
         onItemClick={onItemClick}
-        name={" Filter Date"}
+        className="date-filter"
+        name="Filter Date"
         icon={<i class="fa fa-filter" aria-hidden="true" />}
         items={[
           { value: "today", label: "Today" },
