@@ -19,7 +19,7 @@ import {
   isSunday,
 } from "date-fns";
 
-let dateFilter = {};
+
 
 export function todayRangeDate() {
   return { startDate: startOfToday(), endDate: endOfToday() };
