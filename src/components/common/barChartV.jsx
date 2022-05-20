@@ -2,19 +2,26 @@ import React from "react";
 
 import { Bar } from "react-chartjs-2";
 
-const BarChartH = ({ labels, label, data }) => {
+const BarChartH = ({
+  labels,
+  dataLabel,
+  title,
+  data,
+  render,
+  color,
+  hover,
+  className,
+}) => {
   return (
-    <div className="bar-chart">
+    <div className={className}>
       <Bar
         data={{
           labels: labels,
           datasets: [
             {
-              label: label,
-              backgroundColor: ["rgba(220, 20, 60, 0.6)"],
-              borderColor: ["rgba(220, 20, 60, 0.6)"],
-
-              hoverBackgroundColor: ["rgba(220, 20, 60, 0.8)"],
+              label: dataLabel,
+              backgroundColor: [color],
+              hoverBackgroundColor: [hover],
               data: data,
               borderWidth: 0.0,
             },
@@ -35,7 +42,7 @@ const BarChartH = ({ labels, label, data }) => {
 
             title: {
               display: true,
-              text: label,
+              text: title,
             },
             datalabels: {
               display: true,
@@ -50,7 +57,11 @@ const BarChartH = ({ labels, label, data }) => {
                 dataArr.map((data) => {
                   sum += data;
                 });
-                let percentage = ((value * 100) / sum).toFixed(0) + "% ";
+                if (render === "inTotal") {
+                  let percentage = ((value * 100) / sum).toFixed(0) + "% ";
+                  return percentage;
+                }
+                let percentage = value && value.toFixed(1) + "% ";
                 return percentage;
               },
             },
