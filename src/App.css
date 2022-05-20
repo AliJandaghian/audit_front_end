@@ -6,6 +6,10 @@ body {
   margin: 0;
   font-size: 62.5%;
 }
+
+.clickable {
+  cursor: pointer;
+}
 /* Buttons */
 .button {
   width: 100%;
@@ -15,19 +19,59 @@ body {
 }
 .button__green {
   color: aliceblue;
-  border: 1px solid rgb(15, 121, 47);
+  border: none;
   background-color: rgb(15, 121, 47);
   transition: filter 0.3s;
 }
 .button__purple {
   color: aliceblue;
-  border: 1px solid rgb(70, 60, 180);
+  border: none;
   background-color: rgb(70, 60, 180);
   transition: filter 0.3s;
 }
+
+.delete-button {
+  border-radius: 100%;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid red;
+  color: red;
+  padding: 0;
+}
+
+.edit-button {
+  border-radius: 100%;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid rgb(66, 66, 235);
+  color: rgb(66, 66, 235);
+  padding: 0;
+}
+
+
+
 .button:hover {
   filter: brightness(130%);
 }
+
+/* Spans */
+.span-badge{
+border: 1px solid gray;
+border-radius: 10px;
+padding: 0 0.3rem;
+margin: 0.1rem;
+font-weight: 600;
+font-size: 0.9rem;
+}
+
+.span-badge__red{
+ border-color: red;
+ color:red
+}
+
+
+
+
 
 /* Forms */
 .form__header {
@@ -41,12 +85,23 @@ body {
 
 input[type="password"],
 input[type="text"],
+input[type="date"],
 input[type="email"],
-select {
+select{
   width: 100%;
   box-sizing: border-box;
   font-size: 1rem;
   padding: 0.6rem 1rem;
+  border: 1px solid rgb(70, 60, 180);
+  border-radius: 10px;
+}
+
+
+ .Select {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 0.1rem;
   border: 1px solid rgb(70, 60, 180);
   border-radius: 10px;
 }
@@ -57,7 +112,7 @@ label {
   margin-bottom: 0.3rem;
   font-weight: 600;
 }
-.error-label{
+.error-label {
   margin: 0.3rem;
   padding: 0.4rem 0.5rem;
   background-color: rgba(248, 110, 110, 0.541);
@@ -81,11 +136,28 @@ select option:hover {
 }
 input[type="password"]:focus,
 input[type="text"]:focus,
+input[type="date"]:focus,
 input[type="email"]:focus,
-select:focus {
+select:focus
+ {
   box-shadow: 0 0 4px rgb(98, 90, 187);
   outline: 0;
 }
+
+.Select:focus-within {
+  box-shadow: 0 0 4px rgb(98, 90, 187);
+  outline: 0;
+}
+
+
+
+.nav-dropDown{
+  width: 11rem
+}
+.dropDown__items{
+  text-align: center;
+}
+
 
 /* List  */
 
@@ -118,15 +190,21 @@ select:focus {
 /* Grid */
 .grid {
   display: grid;
+}
+
+.grid__2x3{
   grid-template-columns: repeat(2, 1fr);
-  padding: 0.5rem;
-  gap: 1rem;
 }
 
 @media screen and (min-width: 768px) {
-  .grid {
-    display: grid;
+  .grid__2x3 {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .grid__1x2{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid__3070{
+    grid-template-columns:30% 70%
   }
 }
 /* NavBar  */
@@ -168,7 +246,7 @@ select:focus {
   flex-direction: column;
   width: 100%;
   overflow: hidden;
-  opacity : 0;
+  opacity: 0;
   max-height: 0;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
@@ -186,9 +264,9 @@ select:focus {
   color: rgb(104, 98, 161);
 }
 
- .nav__list.expanded {
+.nav__list.expanded {
   max-height: 15rem;
-  opacity : 1;
+  opacity: 1;
 }
 
 .user_icon {
@@ -224,11 +302,11 @@ select:focus {
   }
 }
 
-
 /* Side Bar */
 .side-bar {
   display: flex;
   flex-direction: column;
+
 }
 
 .side-bar__panel {
@@ -241,7 +319,7 @@ select:focus {
   border: 1px solid rgb(186, 184, 184);
   padding: 1rem;
   border-radius: 5px;
-  background-color: rgb(243, 243, 243);
+  background-color: white;
 }
 
 .side-bar__header {
@@ -251,9 +329,8 @@ select:focus {
   font-size: 1.2rem;
   padding-bottom: 1rem;
   height: 2rem;
-  width: 100%;
   font-weight: bold;
-  color: rgb(219,112,147);
+  color: rgb(219, 112, 147);
 }
 
 .side-bar__close {
@@ -261,20 +338,18 @@ select:focus {
 }
 .side-bar__body {
   font-size: 1rem;
-  width: 100%;
 }
 
 .side-bar__toggler {
-  width: 100%;
   height: 3rem;
   font-size: 1.4rem;
   padding: 0;
-  border: 1px solid rgb(219,112,147);
+  border: 1px solid rgb(219, 112, 147);
   border-left: none;
-  background-color: rgb(219,112,147)
+  background-color: rgb(219, 112, 147);
 }
 
-.side-bar__toggler:hover{
+.side-bar__toggler:hover {
   filter: brightness(130%);
 }
 
@@ -283,8 +358,8 @@ select:focus {
 }
 
 @media screen and (min-width: 768px) {
-  .side-bar__panel {
-    width: 20vw;
+  .side-bar{
+    width: 30%
   }
   .side-bar__toggler {
     display: none;
@@ -297,6 +372,8 @@ select:focus {
   }
 }
 
+/* Work Header */
+
 .work-area {
   font-size: 1rem;
   padding: 1rem;
@@ -304,15 +381,29 @@ select:focus {
   border-radius: 5px;
 }
 
-.work-area .button {
-  width: 8rem;
+.work-area__header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }
+
+.work-area__header button{
+  width: 130px
+}
+
+@media screen and (min-width: 768px) {
+  .work-area {
+    width: 70%
+  }
+  
+}
+
 
 /* Login Form */
 
 .login-form {
   padding: 4rem;
-  margin:  auto;
+  margin: auto;
 }
 
 .login-form p {
@@ -329,15 +420,13 @@ select:focus {
 
 .sign-up-form {
   padding: 4rem;
-  margin:  auto;
+  margin: auto;
 }
 
 .sign-up-form p {
   font-size: 1rem;
   margin-top: 2rem;
 }
-
-
 
 @media screen and (min-width: 768px) {
   .sign-up-form {
@@ -355,56 +444,6 @@ select:focus {
   margin-bottom: 1.5rem;
 }
 
-/* Modal */
-
-.modal {
-  visibility: hidden;
-  opacity: 0;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  transition: visibility 0.2s, opacity 0.2s linear;
-}
-
-/* Modal Content */
-.modal__content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-}
-
-/* The Close Button */
-.modal__close-btn {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.modal__open {
-  visibility: visible;
-  opacity: 1;
-}
-
-.modal__close-btn:hover,
-.modal__close-btn:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-@media screen and (min-width: 1050px) {
-  .modal__content {
-    width: 30%;
-  }
-}
 
 /* Card Box */
 
@@ -433,4 +472,31 @@ select:focus {
   .setting-page {
     width: 50%;
   }
+}
+
+/* Tables */ 
+
+
+.table-header{
+  display: flex;
+  align-items: center;
+}
+
+.table-header p{
+  margin: 0 0.2rem;
+}
+
+/* Charts */
+
+.defects-bar-chart{
+  height: 30vh;
+}
+
+.pie-chart{
+  height: 30vh;
+  margin-bottom: 2rem;
+}
+
+.date-filter button{
+  min-width: 130px;
 }
