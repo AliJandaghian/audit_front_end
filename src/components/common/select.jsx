@@ -6,8 +6,8 @@ const Select = ({ name, label, value, options, error, ...rest }) => {
       <label htmlFor={name} className="label">
         {label}
       </label>
-      <select id={name} name={name} {...rest} defaultValue={"DEFAULT"}>
-        <option value="DEFAULT" disabled>
+      <select id={name} name={name} value={value} {...rest} >
+        <option value="" disabled>
           {label}
         </option>
         {options.map((o) => (
