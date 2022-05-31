@@ -70,8 +70,8 @@ export function toNow() {
 
 export function customRangeDate(datefrom, dateto) {
   return {
-    startDate: startOfDay(new Date(datefrom)),
-    endDate: endOfDay(new Date(dateto)),
+    startDate: startOfDay(sub(new Date(datefrom), {days: -1})),
+    endDate: endOfDay(sub(new Date(dateto), {days: -1})),
   };
 }
 
