@@ -5,6 +5,7 @@ import { Route, Redirect, Routes,BrowserRouter as Router } from "react-router-do
 import Audits from "./components/audits";
 import Login from './components/login';
 import SignUp from './components/signUp';
+import AuditSetting from './components/auditSetting';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Chart,ArcElement, BarElement, BarController,LinearScale, CategoryScale, Decimation, Legend, Title, Tooltip} from 'chart.js';
@@ -22,7 +23,8 @@ class App extends Component {
       <Route  path="/login" element={<Login/>}/>
       <Route  path="/signup" element={<SignUp/>}/>
       <Route  path="/audits/:id" element={<Audits/>}/>
-      <Route exact path="/" element={<Audits/>}/>
+      <Route  path="/audits" element={<AuditSetting/>}/>
+      <Route exact path="/" element={<AuditSetting/>}/>
       </Routes>
     </React.Fragment>
   );
