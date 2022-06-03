@@ -91,7 +91,7 @@ class AuditForm extends Form {
           <form onSubmit={this.handleSubmit} className="form">
             {this.renderSelect("machineId", "Machine", this.state.machines)}
             {this.renderMultiSelect("defectIds", "Defects", this.state.defects)}
-            <button className="button button__purple" type="submit">
+            <button className="button button__green" type="submit">
               Save
             </button>
           </form>

@@ -53,7 +53,7 @@ class AuditTable extends Component {
       content: (item) => {
         return (
           <button
-            className="button edit-button"
+            className="button round-button edit-button"
             onClick={() => this.props.onEdit(item._id)}
           >
             <i className="fas fa-pen"></i>
@@ -67,7 +67,7 @@ class AuditTable extends Component {
       content: (item) => {
         return (
           <button
-            className="button delete-button"
+            className="button round-button delete-button"
             onClick={() => {if(window.confirm('Delte the item?')) { this.props.onDelete(item._id)}}}
           >
             <i className="fas fa-trash-alt"></i>
