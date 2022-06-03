@@ -14,7 +14,7 @@ export async function getAuditSettings() {
   return await http.get(apiEndpoint);
 }
 
-export async function saveDefect(auditSetting) {
+export async function saveAuditSetting(auditSetting) {
   const auditSettingId = auditSetting._id;
   if (auditSettingId) {
     const body = { ...auditSetting };
