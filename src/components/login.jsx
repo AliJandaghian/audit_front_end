@@ -17,13 +17,17 @@ class Login extends Form {
     try {
       await auth.login(this.state.data);
       const { state } = this.props.location;
-      window.location = state ? state.from.pathname : "/";
+      const { navigate } = this.props;
+      const targetPath = state ? state.from.pathname : "/";
+      navigate(targetPath, { replace: true });
+      this.props.loggedIn();
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         const name = ex.response.data.split(" ")[0].replace(/['"]+/g, "");
-        if (name in this.state.data) {errors[name]=ex.response.data;}
-        else errors.password = ex.response.data;
+        if (name in this.state.data) {
+          errors[name] = ex.response.data;
+        } else errors.password = ex.response.data;
         this.setState({ errors });
       }
     }
