@@ -93,7 +93,7 @@ class AuditSetting extends Component {
   render() {
     const { sortColumn, pageSize, currentPage, auditSettingId } = this.state;
     const { totalCount, data } = this.getPagedData();
-    const user = this.props;
+    const {user} = this.props;
     return (
       <div className="work-area main-page">
         <div className="work-area__heading">
@@ -115,7 +115,6 @@ class AuditSetting extends Component {
           sortColumn={sortColumn}
           onEdit={this.handleEditButton}
           onDelete={this.handleDelete}
-          user={user}
         />
         <Pagination
           itemsCount={totalCount}
