@@ -40,7 +40,8 @@ class AuditForm extends Form {
   }
 
   async getMachinesList() {
-    const { data: machines } = await getMachines();
+    const { data: allMachines } = await getMachines();
+    const machines = allMachines.filter(machine=>machine.location._id==this.props.user?.department?._id)
     this.setState({ machines });
   }
 
