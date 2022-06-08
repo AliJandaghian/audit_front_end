@@ -52,7 +52,7 @@ class AuditTable extends Component {
       label: "Edit",
       content: (item) => {
         return (
-          <button
+          (this.props.user?._id === item.auditor._id || this.props.user?.isManager) && <button
             className="button round-button edit-button"
             onClick={() => this.props.onEdit(item._id)}
           >
@@ -66,9 +66,9 @@ class AuditTable extends Component {
       label: "Delete",
       content: (item) => {
         return (
-          <button
+          (this.props.user?._id === item.auditor._id || this.props.user?.isManager) &&  <button
             className="button round-button delete-button"
-            onClick={() => {if(window.confirm('Delte the item?')) { this.props.onDelete(item._id)}}}
+            onClick={() => {if(window.confirm('Deleting the item?')) { this.props.onDelete(item._id)}}}
           >
             <i className="fas fa-trash-alt"></i>
           </button>
@@ -76,6 +76,7 @@ class AuditTable extends Component {
       },
     },
   ];
+  
   render() {
     const { audits, onSort, sortColumn } = this.props;
     return (
