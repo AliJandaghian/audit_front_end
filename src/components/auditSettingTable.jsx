@@ -3,9 +3,6 @@ import Table from "./common/table";
 import auth from "../services/authService";
 
 class AuditSettingTable extends Component {
-  formatDate = (auditDate) => {
-    return new Date(auditDate).toISOString().substring(0, 10);
-  };
 
   foramtEndDate = (endDate) => {
     return new Date(endDate) <= Date.now() ? "span-badge__red" : "";
@@ -20,7 +17,7 @@ class AuditSettingTable extends Component {
       path: "startDate",
       label: "Start Date",
       content: (auditSetting) => {
-        return this.formatDate(auditSetting.startDate);
+       return  new Date(auditSetting.startDate).toLocaleString('en-CA',{year:'numeric',month:'numeric',day:'numeric'});
       },
     },
     {
@@ -29,7 +26,7 @@ class AuditSettingTable extends Component {
       content: (auditSetting) => {
         return (
           <p className={this.foramtEndDate(auditSetting.endDate)}>
-            {this.formatDate(auditSetting.endDate)}
+            {new Date(auditSetting.endDate).toISOString().substring(0, 10)}
           </p>
         );
       },
