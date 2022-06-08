@@ -58,7 +58,10 @@ class Audits extends Component {
     const filterQuery = "?" + queryString.stringify({ ...dateFilter });
     const { data: audits } = await getAudits(auditSettingId + filterQuery);
     const { data: defects } = await getDefects();
-    const { data: machines } = await getMachines();
+    const { data: allMachines } = await getMachines();
+    const machines = allMachines.filter(
+      (machine) => machine.location._id === this.props.user?.department?._id
+    );
     const { data: auditSetting } = await getAuditSetting(auditSettingId);
 
     this.setState({
@@ -151,6 +154,7 @@ class Audits extends Component {
     const { pageSize, currentPage, sortColumn, audits: allAudits } = this.state;
     const sorted = _.orderBy(allAudits, [sortColumn.path], [sortColumn.order]);
     const finalData = paginate(sorted, currentPage, pageSize);
+
     return { totalCount: allAudits.length, data: finalData, sorted };
   };
 
@@ -172,7 +176,7 @@ class Audits extends Component {
       auditSettingId,
       auditSetting,
     } = this.state;
-
+    const { user } = this.props;
     return (
       <div className="container-main">
         <div className="layout">
@@ -256,6 +260,7 @@ class Audits extends Component {
               sortColumn={this.state.sortColumn}
               onEdit={this.handleEditButton}
               onDelete={this.handleDelete}
+              user={user}
             />
 
             <Pagination
@@ -272,6 +277,7 @@ class Audits extends Component {
             auditId={auditId}
             onSave={this.handleAfterSave}
             auditSettingId={auditSettingId}
+            user={user}
           />
         )}
       </div>
