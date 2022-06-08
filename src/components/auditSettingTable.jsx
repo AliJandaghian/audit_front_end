@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Table from "./common/table";
+import auth from "../services/authService";
 
 class AuditSettingTable extends Component {
   formatDate = (auditDate) => {
@@ -50,40 +51,51 @@ class AuditSettingTable extends Component {
         );
       },
     },
-
-    {
-      key: "edit",
-      label: "Edit",
-      content: (item) => {
-        return (
-          <button
-            className="button round-button edit-button"
-            onClick={() => this.props.onEdit(item._id)}
-          >
-            <i className="fas fa-pen"></i>
-          </button>
-        );
-      },
-    },
-    {
-      key: "delete",
-      label: "Delete",
-      content: (item) => {
-        return (
-          <button
-            className="button round-button delete-button"
-            onClick={() => {
-              if (window.confirm("Delte the item?")) {
-                this.props.onDelete(item._id);
-              }
-            }}
-          >
-            <i className="fas fa-trash-alt"></i>
-          </button>
-        );
-      },
-    },
   ];
+
+  editColumn = {
+    key: "edit",
+    label: "Edit",
+    content: (item) => {
+      return (
+        <button
+          className="button round-button edit-button"
+          onClick={() => this.props.onEdit(item._id)}
+        >
+          <i className="fas fa-pen"></i>
+        </button>
+      );
+    },
+  };
+
+  deleteColumn = {
+    key: "delete",
+    label: "Delete",
+    content: (item) => {
+      return (
+        <button
+          className="button round-button delete-button"
+          onClick={() => {
+            if (window.confirm("Delte the item?")) {
+              this.props.onDelete(item._id);
+            }
+          }}
+        >
+          <i className="fas fa-trash-alt"></i>
+        </button>
+      );
+    },
+  };
+
+  constructor() {
+    super();
+    const user = auth.getCurrentUser()
+    if (user?.isManager) {
+      this.columns.push(this.editColumn)
+      this.columns.push(this.deleteColumn)
+    }
+  }
+
   render() {
     const { auditSettings, onSort, sortColumn } = this.props;
     return (
