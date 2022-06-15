@@ -15,3 +15,7 @@ export async function register (user) {
 export async function getUser (userId) {
     return await http.get(`${apiEndpoint}/${userId}`)
 }
+
+export async function getUsers() {
+    return await http.get(apiEndpoint)
+}
