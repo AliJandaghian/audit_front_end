@@ -32,47 +32,70 @@ class Audits extends Component {
     pageSize: 15,
     dateRange: "thisWeek",
     dateRangeLabel: "This Week",
-    dateFilter: {},
     dateFrom: "",
     dateTo: "",
-    auditId: "new",
+    auditId: "",
     isOpen: false,
+    auditSettingId: "",
+    auditSetting: {},
   };
+
+  constructor() {
+    super();
+    this.state.auditSettingId = window.location.pathname.split("/", 3)[2];
+  }
+
   async componentDidUpdate(prevProps, prevState) {
     if (prevState.timer !== this.state.timer) {
-      await this.getData();
+      await this.populateAudits();
     }
   }
 
   async componentDidMount() {
-    await this.getData();
+    await this.populateAuditSetting();
+    await this.populateAudits();
+    await this.populateDefects();
+    await this.populateMachines();
   }
 
-  async getData() {
-    const auditSettingId = window.location.pathname.split("/", 3)[2];
+  populateAuditSetting = async () => {
+    try {
+      const auditSettingId = this.state.auditSettingId;
+      const { data: auditSetting } = await getAuditSetting(auditSettingId);
+      this.setState({ auditSetting });
+    } catch (ex) {
+      if (ex.response?.status === 400 || ex.response?.status === 404) {
+        console.log(400);
+        window.location = "/not-found";
+      }
+    }
+  };
+
+  populateAudits = async () => {
+    const auditSettingId = this.state.auditSettingId;
     let { dateFilter, dateRangeLabel } = handleApplyFilter(
       this.state.dateRange,
       this.state.dateFrom,
       this.state.dateTo
     );
     const filterQuery = "?" + queryString.stringify({ ...dateFilter });
+
     const { data: audits } = await getAudits(auditSettingId + filterQuery);
+    this.setState({ audits, dateRangeLabel });
+  };
+
+  populateDefects = async () => {
     const { data: defects } = await getDefects();
+    this.setState({ defects });
+  };
+
+  populateMachines = async () => {
     const { data: allMachines } = await getMachines();
     const machines = allMachines.filter(
       (machine) => machine.location._id === this.props.user?.department?._id
     );
-    const { data: auditSetting } = await getAuditSetting(auditSettingId);
-
-    this.setState({
-      audits,
-      defects,
-      machines,
-      dateRangeLabel,
-      auditSettingId,
-      auditSetting,
-    });
-  }
+    this.setState({ machines });
+  };
 
   getPieData = () => {
     const countResults = countBasedOnResults(this.state.audits);
@@ -115,7 +138,7 @@ class Audits extends Component {
 
   handleAfterSave = (audit) => {
     let audits = [...this.state.audits];
-    if (this.state.auditId === "new") {
+    if (this.state.auditId === "") {
       audits.push(audit);
     } else {
       let oldAudit = audits.find((p) => p._id === audit._id);
@@ -177,6 +200,10 @@ class Audits extends Component {
       auditSetting,
     } = this.state;
     const { user } = this.props;
+
+    if (!auditSetting._id) {
+      return <div />;
+    }
     return (
       <div className="container-main">
         <div className="layout">
@@ -228,11 +255,11 @@ class Audits extends Component {
           </div>
           <div className="work-area">
             <div className="work-area__heading">
-              <h3>{auditSetting && auditSetting.name}</h3>
+              <h3>{auditSetting?.name}</h3>
             </div>
             <div className="work-area__header">
               {(auditSetting &&
-                new Date(auditSetting.endDate) >= new Date() && (
+                new Date(auditSetting?.endDate) >= new Date() && (
                   <button
                     className="button button__green"
                     onClick={this.handleModalForm}
@@ -273,7 +300,7 @@ class Audits extends Component {
         </div>
         {this.state.isOpen && (
           <AuditForm
-            closeModal={() => this.setState({ isOpen: false, auditId: "new" })}
+            closeModal={() => this.setState({ isOpen: false, auditId: "" })}
             auditId={auditId}
             onSave={this.handleAfterSave}
             auditSettingId={auditSettingId}

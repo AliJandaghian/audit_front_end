@@ -37,14 +37,18 @@ class AuditTable extends Component {
       path: "defects",
       label: "Defects",
       content: (audit) => {
-        return <div>{audit.defects.map((def) => (
-          <span
-            key={audit._id + def._id}
-            className="span-badge span-badge__red"
-          >
-            {def.name}
-          </span>
-        ))}</div>
+        return (
+          <div>
+            {audit.defects.map((def) => (
+              <span
+                key={audit._id + def._id}
+                className="span-badge span-badge__red"
+              >
+                {def.name}
+              </span>
+            ))}
+          </div>
+        );
       },
     },
     {
@@ -52,12 +56,15 @@ class AuditTable extends Component {
       label: "Edit",
       content: (item) => {
         return (
-          (this.props.user?._id === item.auditor._id || this.props.user?.isManager) && <button
-            className="button round-button edit-button"
-            onClick={() => this.props.onEdit(item._id)}
-          >
-            <i className="fas fa-pen"></i>
-          </button>
+          (this.props.user?._id === item.auditor._id ||
+            this.props.user?.isManager) && (
+            <button
+              className="button round-button edit-button"
+              onClick={() => this.props.onEdit(item._id)}
+            >
+              <i className="fas fa-pen"></i>
+            </button>
+          )
         );
       },
     },
@@ -66,17 +73,24 @@ class AuditTable extends Component {
       label: "Delete",
       content: (item) => {
         return (
-          (this.props.user?._id === item.auditor._id || this.props.user?.isManager) &&  <button
-            className="button round-button delete-button"
-            onClick={() => {if(window.confirm('Deleting the item?')) { this.props.onDelete(item._id)}}}
-          >
-            <i className="fas fa-trash-alt"></i>
-          </button>
+          (this.props.user?._id === item.auditor._id ||
+            this.props.user?.isManager) && (
+            <button
+              className="button round-button delete-button"
+              onClick={() => {
+                if (window.confirm("Deleting the item?")) {
+                  this.props.onDelete(item._id);
+                }
+              }}
+            >
+              <i className="fas fa-trash-alt"></i>
+            </button>
+          )
         );
       },
     },
   ];
-  
+
   render() {
     const { audits, onSort, sortColumn } = this.props;
     return (

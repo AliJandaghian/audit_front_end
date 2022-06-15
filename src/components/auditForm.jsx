@@ -22,30 +22,40 @@ class AuditForm extends Form {
     defectIds: Joi.array().items(Joi.string()).label("Defects"),
   };
 
-  async componentDidMount() {
-    await this.getDefectsList();
-    await this.getMachinesList();
-    let data = {};
-    let auditId = this.props.auditId === "new" ? "" : this.props.auditId;
-    const auditSettingId = this.props.auditSettingId;
-    data.auditSettingId = auditSettingId;
-    if (auditId !== "") {
-      const { data: audit } = await getAudit(auditSettingId, auditId);
-      data._id = auditId;
-      data.machineId = audit.machine._id;
-      data.defectIds = audit.defects.map((defect) => defect._id);
-    }
-
-    this.setState({ auditId, data });
+  constructor(props) {
+    super(props);
+    this.state.data.auditSettingId = props.auditSettingId;
   }
 
-  async getMachinesList() {
+  async componentDidMount() {
+    await this.populateDefects();
+    await this.populateMachines();
+    await this.populateAudit();
+  }
+
+  populateAudit = async () => {
+    const { auditId } = this.props;
+    if (auditId === "") return;
+
+    const auditSettingId = this.state.auditSettingId;
+    let data = this.state.data;
+    const { data: audit } = await getAudit(auditSettingId, auditId);
+    data._id = auditId;
+    data.machineId = audit.machine._id;
+    data.defectIds = audit.defects.map((defect) => defect._id);
+
+    this.setState({ auditId, data });
+  };
+
+  async populateMachines() {
     const { data: allMachines } = await getMachines();
-    const machines = allMachines.filter(machine=>machine.location._id==this.props.user?.department?._id)
+    const machines = allMachines.filter(
+      (machine) => machine.location._id === this.props.user?.department?._id
+    );
     this.setState({ machines });
   }
 
-  async getDefectsList() {
+  async populateDefects() {
     const { data: defects } = await getDefects();
     let options = [];
     defects.forEach((value) => {
@@ -68,7 +78,7 @@ class AuditForm extends Form {
     try {
       const { data: audit } = await saveAudit(this.state.data);
       toast.success("Successfully Saved");
-      (this.state.auditId) ? this.props.closeModal() : this.newForm();
+      this.state.auditId ? this.props.closeModal() : this.newForm();
       this.props.onSave(audit);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
