@@ -15,7 +15,7 @@ export async function getMachines() {
   return await http.get(apiEndpoint);
 }
 
-export async function saveMachines(machine) {
+export async function saveMachine(machine) {
   const machineId = machine._id;
   if (machineId) {
     const body = { ...machine };
@@ -25,6 +25,6 @@ export async function saveMachines(machine) {
   return await http.post(apiEndpoint, machine);
 }
 
-export async function deleteDefect(machineId) {
+export async function deleteMachine(machineId) {
   return await http.delete(machineUrl(machineId));
 }
