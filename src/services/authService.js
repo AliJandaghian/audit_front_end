@@ -39,10 +39,11 @@ export function getJwt() {
 }
 
 
-export default { 
+const exportedObject = { 
     login,
     loginWithJwt,
     logout,
     getCurrentUser,
     getJwt
 }
+export default exportedObject
