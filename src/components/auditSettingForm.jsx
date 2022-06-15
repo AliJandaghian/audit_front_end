@@ -21,11 +21,10 @@ class AuditSettingForm extends Form {
   };
 
   async componentDidMount() {
-    //const user = this.props.user
+    const user = this.props.user;
     let data = this.state.data;
-    data.departmentId = "6245e63578dcce0ad767b138";
-    let { auditSettingId } = this.props;
-    auditSettingId = auditSettingId === "new" ? "" : auditSettingId;
+    data.departmentId = user?.department._id;
+    const { auditSettingId } = this.props;
     if (auditSettingId !== "") {
       const { data: auditSetting } = await getAuditSetting(auditSettingId);
       data._id = auditSettingId;

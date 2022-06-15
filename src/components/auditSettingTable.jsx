@@ -3,7 +3,6 @@ import Table from "./common/table";
 import auth from "../services/authService";
 
 class AuditSettingTable extends Component {
-
   foramtEndDate = (endDate) => {
     return new Date(endDate) <= Date.now() ? "span-badge__red" : "";
   };
@@ -17,7 +16,11 @@ class AuditSettingTable extends Component {
       path: "startDate",
       label: "Start Date",
       content: (auditSetting) => {
-       return  new Date(auditSetting.startDate).toLocaleString('en-CA',{year:'numeric',month:'numeric',day:'numeric'});
+        return new Date(auditSetting.startDate).toLocaleString("en-CA", {
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+        });
       },
     },
     {
@@ -73,7 +76,7 @@ class AuditSettingTable extends Component {
         <button
           className="button round-button delete-button"
           onClick={() => {
-            if (window.confirm("Delte the item?")) {
+            if (window.confirm("Delete the item?")) {
               this.props.onDelete(item._id);
             }
           }}
@@ -86,10 +89,10 @@ class AuditSettingTable extends Component {
 
   constructor() {
     super();
-    const user = auth.getCurrentUser()
+    const user = auth.getCurrentUser();
     if (user?.isManager) {
-      this.columns.push(this.editColumn)
-      this.columns.push(this.deleteColumn)
+      this.columns.push(this.editColumn);
+      this.columns.push(this.deleteColumn);
     }
   }
 

@@ -16,22 +16,26 @@ class AuditSetting extends Component {
     sortColumn: { path: "name", order: "desc" },
     pageSize: 10,
     currentPage: 1,
-    auditSettingId: "new",
+    auditSettingId: "",
     user: {},
   };
 
   async componentDidMount() {
+    await this.populateAuditSettings();
+  }
+
+  populateAuditSettings = async () => {
     const { data } = await getAuditSettings();
     const { user } = this.props;
     const auditSettings = data.filter(
       (a) => a.department === user.department._id
     );
     this.setState({ auditSettings });
-  }
+  };
 
   handleAfterSave = (auditSetting) => {
     let auditSettings = [...this.state.auditSettings];
-    if (this.state.auditSettingId === "new") {
+    if (this.state.auditSettingId === "") {
       auditSettings.push(auditSetting);
     } else {
       let oldAuditSetting = auditSettings.find(
@@ -93,7 +97,7 @@ class AuditSetting extends Component {
   render() {
     const { sortColumn, pageSize, currentPage, auditSettingId } = this.state;
     const { totalCount, data } = this.getPagedData();
-    const {user} = this.props;
+    const { user } = this.props;
     return (
       <div className="work-area main-page">
         <div className="work-area__heading">
@@ -125,10 +129,11 @@ class AuditSetting extends Component {
         {this.state.isOpen && (
           <AuditSettingForm
             closeModal={() =>
-              this.setState({ isOpen: false, auditSettingId: "new" })
+              this.setState({ isOpen: false, auditSettingId: "" })
             }
             auditSettingId={auditSettingId}
             onSave={this.handleAfterSave}
+            user={user}
           />
         )}
       </div>
