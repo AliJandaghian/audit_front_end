@@ -1,3 +1,12 @@
+:root {
+  --purple: rgb(70, 60, 180);
+  --white: #fff;
+  --red: red;
+  --pink: rgb(219, 112, 147);
+  --black: black;
+  --button_text: aliceblue;
+}
+
 html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -16,7 +25,7 @@ body {
   padding: 0.5rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
-  color: aliceblue;
+  color: var(--button_text);
   border: none;
   background-color: transparent;
 }
@@ -25,12 +34,12 @@ body {
   transition: filter 0.3s;
 }
 .button__purple {
-  background-color: rgb(70, 60, 180);
+  background-color: var(--purple);
   transition: filter 0.3s;
 }
 
 .button__red {
-  background-color: red;
+  background-color: var(--red);
   transition: filter 0.3s;
 }
 
@@ -43,43 +52,37 @@ body {
 
 .delete-button {
   border: 1px solid rgba(255, 0, 0, 0.4);
-  color: red;
+  color: var(--red);
 }
 
 .edit-button {
   border: 1px solid rgba(66, 66, 235, 0.4);
-  color: rgb(66, 66, 235);
+  color: var(--purple);
 }
 
-.open-button{
+.open-button {
   border: 1px solid rgba(0, 128, 0, 0.4);
-  color: green
+  color: green;
 }
-
-
 
 .button:hover {
   filter: brightness(130%);
 }
 
 /* Spans */
-.span-badge{
-border: 1px solid gray;
-border-radius: 10px;
-padding: 0 0.3rem;
-margin: 0.1rem;
-font-weight: 600;
-font-size: 0.9rem;
+.span-badge {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 0 0.3rem;
+  margin: 0.1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
-.span-badge__red{
- border-color: red;
- color:red
+.span-badge__red {
+  border-color: var(--red);
+  color: var(--red);
 }
-
-
-
-
 
 /* Forms */
 .form__header {
@@ -95,22 +98,21 @@ input[type="password"],
 input[type="text"],
 input[type="date"],
 input[type="email"],
-select{
+select {
   width: 100%;
   box-sizing: border-box;
   font-size: 1rem;
   padding: 0.6rem 1rem;
-  border: 1px solid rgb(70, 60, 180);
+  border: 1px solid var(--purple);
   border-radius: 10px;
 }
 
-
- .Select {
+.Select {
   width: 100%;
   box-sizing: border-box;
   font-size: 1rem;
   padding: 0.1rem;
-  border: 1px solid rgb(70, 60, 180);
+  border: 1px solid var(--purple);
   border-radius: 10px;
 }
 
@@ -137,35 +139,27 @@ select {
   background-position-x: 98%;
   background-position-y: 5px;
 }
-select option:hover {
-  background: #f00;
-  color: #fff;
-  box-shadow: inset 20px 20px #f00;
-}
+
 input[type="password"]:focus,
 input[type="text"]:focus,
 input[type="date"]:focus,
 input[type="email"]:focus,
-select:focus
- {
-  box-shadow: 0 0 4px rgb(98, 90, 187);
+select:focus {
+  box-shadow: 0 0 4px var(--purple);
   outline: 0;
 }
 
 .Select:focus-within {
-  box-shadow: 0 0 4px rgb(98, 90, 187);
+  box-shadow: 0 0 4px var(--purple);
   outline: 0;
 }
 
-
-
-.nav-dropDown{
-  width: 11rem
+.nav-dropDown {
+  width: 11rem;
 }
-.dropDown__items{
+.dropDown__items {
   text-align: center;
 }
-
 
 /* List  */
 
@@ -200,19 +194,20 @@ select:focus
   display: grid;
 }
 
-.grid__2x3{
+.grid__2x3 {
   grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 @media screen and (min-width: 768px) {
   .grid__2x3 {
     grid-template-columns: repeat(3, 1fr);
   }
-  .grid__1x2{
+  .grid__1x2 {
     grid-template-columns: repeat(2, 1fr);
   }
-  .grid__3070{
-    grid-template-columns:30% 70%
+  .grid__3070 {
+    grid-template-columns: 30% 70%;
   }
 }
 /* NavBar  */
@@ -226,16 +221,23 @@ select:focus
 }
 .nav__brand {
   font-size: 1.2rem;
-  background-color: rgb(70, 60, 180);
-  color: rgb(232, 246, 237);
+  background-color: var(--purple);
+  color: var(--white);
   border-radius: 15px;
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 0.6rem;
   margin: 0 1rem;
   transition: background-color 0.3s;
 }
+
 .nav__brand:hover {
-  color: rgb(232, 246, 237);
+  color: var(--white);
   background-color: rgb(98, 90, 187);
+}
+
+.nav_brand_container {
+  height: 56px;
+  display: flex;
+  align-items: center;
 }
 
 .nav__toggler {
@@ -243,8 +245,8 @@ select:focus
   width: 3rem;
   height: 2.2rem;
   border: none;
-  background-color: rgb(70, 60, 180);
-  color: aliceblue;
+  background-color: var(--purple);
+  color: var(--button_text);
   border-radius: 5px;
   font-size: 1rem;
 }
@@ -259,17 +261,21 @@ select:focus
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 .nav__item {
-  padding: 0.7rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1.2rem;
   border-bottom: 1px solid rgb(62, 62, 62);
 }
+.nav_department {
+  color: var(--white);
+  font-size: 1rem;
+}
 
 .nav__item > a {
-  color: rgb(228, 227, 239);
+  color: var(--white);
   transition: color 0.3s;
 }
 .nav__item > a:hover {
-  color: rgb(104, 98, 161);
+  color: var(--purple);
 }
 
 .nav__list.expanded {
@@ -278,19 +284,7 @@ select:focus
 }
 
 .user_icon {
-  border: 1px solid rgb(70, 60, 180);
-  border-radius: 100%;
-  padding: 0.3rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  cursor: pointer;
-  background-color: rgb(237, 254, 237);
-  transition: background-color 0.3s;
-}
-
-.user_icon:hover {
-  color: aliceblue;
-  background-color: rgb(70, 60, 180);
+  color: var(--white);
 }
 
 @media screen and (min-width: 768px) {
@@ -314,19 +308,18 @@ select:focus
 .side-bar {
   display: flex;
   flex-direction: column;
-
 }
 
 .side-bar__panel {
   float: left;
   min-height: 80vh;
-  border: 1px solid black;
+  border: 1px solid var(--black);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   border: 1px solid rgba(186, 184, 184, 0.58);
   padding: 1rem;
-  background-color: white;
+  background-color: var(--white);
 }
 
 .side-bar__header {
@@ -337,7 +330,7 @@ select:focus
   padding-bottom: 1rem;
   height: 2rem;
   font-weight: bold;
-  color: rgb(219, 112, 147);
+  color: var(--pink);
 }
 
 .side-bar__close {
@@ -351,9 +344,9 @@ select:focus
   height: 3rem;
   font-size: 1.4rem;
   padding: 0;
-  border: 1px solid rgb(219, 112, 147);
+  border: 1px solid var(--pink);
   border-left: none;
-  background-color: rgb(219, 112, 147);
+  background-color: var(--pink);
 }
 
 .side-bar__toggler:hover {
@@ -365,7 +358,7 @@ select:focus
 }
 
 @media screen and (min-width: 768px) {
-  .side-bar{
+  .side-bar {
     width: 30%;
   }
   .side-bar__toggler {
@@ -384,36 +377,34 @@ select:focus
 .work-area {
   font-size: 0.8rem;
   padding: 0.5rem;
-
 }
 
-.work-area__header{
+.work-area__header {
   display: flex;
   justify-content: space-between;
   margin: 0 1rem 1rem 0;
 }
 .work-area__heading {
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
+  text-transform: capitalize;
 }
 
-.work-area__header button{
-  width: 130px
+.work-area__header button {
+  width: 130px;
 }
 
 @media screen and (min-width: 768px) {
   .work-area {
     border-radius: 5px;
-    width: 70%
+    width: 70%;
   }
 
-  .work-area.main-page{
+  .work-area.main-page {
     margin: 0 auto;
     border: none;
   }
-  
 }
-
 
 /* Login Form */
 
@@ -460,7 +451,6 @@ select:focus
   margin-bottom: 1.5rem;
 }
 
-
 /* Card Box */
 
 .card-box {
@@ -477,6 +467,7 @@ select:focus
 
 .setting-page {
   margin: 0 auto;
+  padding: 1rem;
 }
 
 .setting-page__header {
@@ -490,34 +481,66 @@ select:focus
   }
 }
 
-/* Tables */ 
+/* Tables */
 
-
-.table-header{
+.table-header {
   display: flex;
   align-items: center;
 }
 
-.table-header p{
+.table-header p {
   margin: 0 0.2rem;
 }
 
 .main-page td:first-child {
-  font-weight: bold
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 /* Charts */
 
-.defects-bar-chart{
+.defects-bar-chart {
   height: 35vh;
 }
 
-.pie-chart{
+.pie-chart {
   height: 30vh;
   margin-bottom: 2rem;
 }
 
-.date-filter button{
+.date-filter button {
   min-width: 130px;
 }
 
+/* Tooltip */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted var(--black);
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--black);
+  color: var(--white);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* not found page */
+
+.Not-Found-Page{
+  margin: 4rem auto;
+  text-align: center;
+}
