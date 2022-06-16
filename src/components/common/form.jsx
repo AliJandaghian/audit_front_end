@@ -103,8 +103,8 @@ class Form extends Component {
         name={name}
         options={options}
         value={
-          typeof this.state.data[name] !== "undefined" &&
-          options.filter((obj) => this.state.data[name].includes(obj.value))
+          typeof data[name] !== "undefined" &&
+          options.filter((obj) => data[name].includes(obj.value))
         }
         label={label}
         onChange={this.handleChange2}
