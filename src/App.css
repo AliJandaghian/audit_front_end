@@ -107,6 +107,14 @@ select {
   border-radius: 10px;
 }
 
+input[type="date"] {
+  display: block;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  min-height: 2.8rem;
+  background-color: var(--white);
+}
+
 .Select {
   width: 100%;
   box-sizing: border-box;
