@@ -16,6 +16,9 @@ import {
   countDefects,
   countMachineResults,
 } from "../services/reportService";
+import {
+  convertToUTC
+} from "../services/dateService";
 import PieChart from "./common/pieChart";
 import BarChartV from "./common/barChartV";
 import { toast } from "react-toastify";
@@ -78,6 +81,9 @@ class Audits extends Component {
       this.state.dateFrom,
       this.state.dateTo
     );
+    dateFilter.startDate = convertToUTC(dateFilter.startDate)
+    dateFilter.endDate = convertToUTC(dateFilter.endDate)
+    
     const filterQuery = "?" + queryString.stringify({ ...dateFilter });
 
     const { data: audits } = await getAudits(auditSettingId + filterQuery);

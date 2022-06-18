@@ -9,8 +9,7 @@ import {
 } from "./dateService";
 
 export function handleApplyFilter(range, dateFrom, dateTo) {
-  var dateFilter = {};
-  const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+
   if (range === "today") {
     return { dateFilter: todayRangeDate(), dateRangeLabel: "Today" };
   }

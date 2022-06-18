@@ -19,7 +19,9 @@ import {
   isSunday,
 } from "date-fns";
 
-
+export function convertToUTC(date) {
+  return new Date(date).toUTCString();
+}
 
 export function todayRangeDate() {
   return { startDate: startOfToday(), endDate: endOfToday() };
@@ -70,8 +72,8 @@ export function toNow() {
 
 export function customRangeDate(datefrom, dateto) {
   return {
-    startDate: startOfDay(sub(new Date(datefrom), {days: -1})),
-    endDate: endOfDay(sub(new Date(dateto), {days: -1})),
+    startDate: startOfDay(sub(new Date(datefrom), { days: -1 })),
+    endDate: endOfDay(sub(new Date(dateto), { days: -1 })),
   };
 }
 
