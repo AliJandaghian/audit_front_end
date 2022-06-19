@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Built With
+- Javascript
+- React JS
+- Axios
+- Chart JS
+- React-Router-Dom V6
+- HTML5
+- CSS3
+
+
 ## Available Scripts
 
 In the project directory, you can run:
