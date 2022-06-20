@@ -1,4 +1,22 @@
-# Getting Started with Create React App
+# About This Project
+
+This is an idea for using small auditing app in manufacturing production lines to find defects and issues. With this app managers and team leads can define a auditing form in a specific department and location and ask operators to do some audit and QC test with this app. Each department in a company has separate page in this auditing app with unlimited auditing forms which can be created by managers. 
+
+## Advantages
+- Simple and Super User-Friendly UI
+- Mobile/Tablet compatibility
+- Showing real-time results in each audit workspace for finding the issues in shortest time. 
+- Different levels of access for data protection. 
+- Using Cloud services.
+
+For demo you can check this [Industrial-Auditing-Demo](http://industrial-auditing.herokuapp.com/).
+Create an account, so you will be initially in operator role and can open your department auditing forms. 
+For checking this app as manager role please use this credential:
+Username:  john.smith@ia.com
+Password: 123456a
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -10,6 +28,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - React-Router-Dom V6
 - HTML5
 - CSS3
+- Bootstrap 5
 
 
 ## Available Scripts
