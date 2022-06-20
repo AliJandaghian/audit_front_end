@@ -1,6 +1,9 @@
 import React from "react";
 
 import { Doughnut } from "react-chartjs-2";
+import registerChartJS from "../chartJs";
+
+registerChartJS();
 
 const PieChart = ({ labels, label, data }) => {
   return (
@@ -49,7 +52,7 @@ const PieChart = ({ labels, label, data }) => {
                 let sum = 0;
                 let dataArr = ctx.chart.data.datasets[0].data;
                 dataArr.map((data) => {
-                  sum += data;
+                  return (sum += data);
                 });
                 let percentage = ((value * 100) / sum).toFixed(0) + "% ";
                 return percentage;

@@ -15,33 +15,8 @@ import auth from "./services/authService";
 import AuditSetting from "./components/auditSetting";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  Chart,
-  ArcElement,
-  BarElement,
-  BarController,
-  LinearScale,
-  CategoryScale,
-  Decimation,
-  Legend,
-  Title,
-  Tooltip,
-} from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import ProtectedRoute from "./components/common/protectedRoute";
 
-Chart.register(
-  ChartDataLabels,
-  BarElement,
-  ArcElement,
-  BarController,
-  LinearScale,
-  CategoryScale,
-  Decimation,
-  Legend,
-  Title,
-  Tooltip
-);
+import ProtectedRoute from "./components/common/protectedRoute";
 
 class App extends Component {
   state = {
