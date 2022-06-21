@@ -15,7 +15,7 @@ class DateFilter extends Component {
         onItemClick={onItemClick}
         className="date-filter"
         name="Filter Date"
-        icon={<i class="fa fa-filter" aria-hidden="true" />}
+        icon={<i className="fa fa-filter" aria-hidden="true" />}
         items={[
           { value: "today", label: "Today" },
           { value: "yesterday", label: "Yesterday" },

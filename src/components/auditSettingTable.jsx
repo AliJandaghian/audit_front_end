@@ -46,7 +46,7 @@ class AuditSettingTable extends Component {
               window.location.href = `/audits/${item._id}`;
             }}
           >
-            <i class="fas fa-external-link-alt"></i>
+            <i className="fas fa-external-link-alt"></i>
           </button>
         );
       },
