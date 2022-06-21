@@ -20,13 +20,19 @@ import ProtectedRoute from "./components/common/protectedRoute";
 
 class App extends Component {
   state = {
+    userLoggedIn: false,
     user: {},
   };
 
-  componentDidMount() {
+  constructor() {
+    super();
+    this.state.user = auth.getCurrentUser();
+  }
+
+  handleAferLogIn = () => {
     const user = auth.getCurrentUser();
     this.setState({ user });
-  }
+  };
 
   render() {
     const { user } = this.state;
@@ -37,7 +43,7 @@ class App extends Component {
         <Routes>
           <Route
             path="/login"
-            element={<WrappedLogin loggedIn={() => this.componentDidMount()} />}
+            element={<WrappedLogin loggedIn={() => this.handleAferLogIn()} />}
           />
           <Route path="/signup" element={<SignUp />} />
           <Route element={<ProtectedRoute />}>
